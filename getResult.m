@@ -29,5 +29,8 @@ function [Ra, PET] = getResult(Lat, Long, tempsource, maxtempsource, mintempsour
     ylabel('PET [mm day^{-1}]')
     title(['Potential evaporation at ' num2str(Lat) '\circN, ' num2str(Long) '\circE' ])
 
+    T = table(time, reshape(Ra, size(time)), reshape(PET, size(time)), 'VariableNames', {'Date', 'Solar Radiation', 'PET'});
+    writetable(T, 'mydata.csv', 'Delimiter', ',');
+
 end
 
